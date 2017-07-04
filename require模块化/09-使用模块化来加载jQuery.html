@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="require.js"></script>
+	<script>
+		require.config({
+			baseUrl: "/",
+			paths: {
+				"jq": "assets/jQuery/jquery.min"
+			}
+		})
+
+		//1. 想使用模块化的方式加载第三方库的时候，首先
+		//检查第三方库是否支持模块化
+		require(["jq"], function($){
+			console.log($);
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

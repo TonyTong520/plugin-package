@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="require.js"></script>
+	<script>
+		//为实现模块化的第三方内容，可以使用require函数直接进行请求加载
+		//但是只能将这个第三方模块中的内容执行一遍，并不能帮助他实现依赖项的加载，也不能将模块的产出内容交给回调函数使用
+
+
+		//可以通过配置来实现给第三方非模块化的内容设置依赖项
+		require.config({
+			baseUrl: "/",
+			paths: {
+				"jquery": "assets/jQuery/jquery.min",
+				"ani": "assets/animate/animate"
+			},
+
+			//可以通过shim为第三方非模块化的内容配置相关的依赖项等等...
+			shim: {
+				//属性名：第三方非模块内容的别名
+				"ani": {
+					//dependences： 要给这个模块加载的依赖项！
+					deps: ["jquery"],
+					//可以通过exports属性，为当前的非模块化内容，设置类似于模块化返回值的内容，  这里设置的是一个名字，requirejs会根据这个名字去非模块化的内容中查找和其同名的全局变量，最终将这个变量的值作为模块的产出，返回值使用！
+					exports: "date"
+				}
+			}
+		})
+
+		require(["ani"], function(animate){
+			console.log(animate)
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="require.js"></script>
+
+	<script>
+		//在引用模块的时候，如果模块有产出，有提供内容给我们使用
+		//那需要在后面的回调函数中，写一个形参，来接收当前要加载的这个模块产出的内容
+		require(["moduleb"], function(obj){
+			console.log(obj);
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

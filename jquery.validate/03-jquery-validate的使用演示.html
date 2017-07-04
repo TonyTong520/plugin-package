@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		td>p{
+			display: none;
+		}
+
+		.error{
+			color: red;
+			border: 1px solid red;
+		}
+
+		.success {
+			color: green;
+			border: 1px solid green;
+		}
+	</style>
+	<script src="jquery.js"></script>
+	<script src="jquery-validate.min.js"></script>
+</head>
+<body>
+	<form action="">
+		<table>
+			<tr>
+				<td>
+					<input type="text" name="username" data-description="username" data-describedby="usernameinfo" data-trim  data-required data-conditional="isBeauty"><p id="usernameinfo"></p>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="text" data-describedby="phoneinfo" data-description="phone" name="phonenumber" data-description data-required data-pattern="\d{11}"><p id="phoneinfo"></p></td>
+			</tr>
+		</table>
+	
+		<button id="btn">提交</button>
+	</form>
+
+	<script>
+
+		// validate方法是注册一个验证事件
+		// 而不是说调用该方法才会验证！
+		$("form").validate({
+			sendForm: false,
+			// onKeyup: true,
+			// onBlur: true,	
+			// onChange: true,
+			// onSubmit: false,
+			// valid: function(){
+			// 	//当整个表单通过验证的时候，会调用该回调方法
+			// 	console.log("验证通过了");
+			// },
+			// invalid: function(){
+			// 	console.log("验证不通过");
+			// },
+			// eachField: function(){
+			// 	console.log("eachField被调用了", this);
+			// },
+			eachValidField: function(){
+				// console.log("eachValidField,被调用了", this);
+				this.next().show().removeClass("error").addClass("success");
+			},
+			eachInvalidField: function(){
+				// console.log("eachInvalidField,被调用了", this);
+				this.next().show().removeClass("success").addClass("error");
+			},
+			conditional: {
+				"isShuaiGe": function(){
+					return this.val() == "潘明";
+				},
+				"isBeauty": function(){
+					return this.val() == "教主";
+				}
+			},
+			description: {
+				"username": {
+					required: "用户名不能为空",
+					conditional: "你输入的不是美女",
+					valid: "输入正确！"
+				},
+				"phone": {
+					pattern: "手机号码不正确",
+					required: "请输入手机号码",
+					valid: "输入正确"
+				}
+			}
+		});
+	</script>
+</body>
+</html>

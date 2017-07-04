@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="template-web.js"></script>
+
+	<script type="text/template" id="subtpl">
+		<ul>
+			{{each $data v i}}
+				<li>{{v}}</li>
+			{{/each}}
+		</ul>
+	</script>
+
+	<script type="text/template" id="tpl">
+		{{birthday | dateFormat}}
+	</script>
+</head>
+<body>
+	
+	<script>
+		template.defaults.imports.dateFormat = function(value){
+			var year = value.getFullYear();
+			var month = value.getMonth() + 1;
+			var day = value.getDate();
+			var hour = value.getHours();
+			var minute = value.getMinutes();
+			var second = value.getSeconds();
+
+			return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+			//2017-6-29 10:10:10
+		};
+
+		var html = template("tpl", {
+			name: "沈燕飞",
+			birthday: new Date(),
+			age: 18,
+			hobby: [
+				"抽烟",
+				"喝酒",
+				"烫头"
+			]
+		});
+
+
+		// var html = template("tpl", [
+		// 		"抽烟",
+		// 		"喝酒",
+		// 		"烫头"
+		// ]);
+
+		document.body.innerHTML = html;
+	</script>
+</body>
+</html>

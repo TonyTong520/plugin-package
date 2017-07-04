@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.js"></script>
+	<script src="jquery-form/jquery.form.js"></script>
+</head>
+<body>
+	<form>
+		<label for="name"></label><input id="name" type="text" name="name">
+		<label for="password"></label><input id="password" type="password" name="password">
+		<button id="btn">提交</button>
+	</form>
+
+	<script>
+		$("#btn").click(function(e){
+			//$("form").ajaxSubmit()
+			//这方法可以把表单进行 异步提交 最终使用其实就是xhr对象进行的提交
+			//提交的地址，默认就是 form标签中 action属性中的内容
+			//提交的方式，默认就是 from标签中 method属性中的内容
+
+			//如果form标签中没有书写 action以及method
+			//那么默认会以get方式将数据提交到当前页面的地址
+
+
+			//ajaxSubmit方法是可以传递一个参数的，这个参数是一个对象
+			//对象中能够书写的内容，和$.ajax的参数对象一模一样
+			//url: 要将表单数据提交的地址
+			//type: 要使用哪种方式提交表单
+			//data: 除了表单自身包含的数据，可以通过data来附加一些额外的数据进行提交
+			//success: 成功提交后的回调
+			//error: 提交失败后的回调
+			//complete: 不论成功与否，只要请求完成就会调用这个回调
+
+			$("form").ajaxSubmit({
+				url: "123.php",
+				type: "post",
+				data: {
+					gender: "male"
+				},
+				success: function(data){
+
+				},
+				error: function(){
+					console.log("出错啦")
+				},
+				complete: function(){
+					alert(1);
+				}
+			});
+
+			e.preventDefault();
+			// return false;
+		})
+	</script>
+</body>
+</html>

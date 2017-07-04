@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker.standalone.css">
+	<script src="jquery.js"></script>
+	<script src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+</head>
+<body>
+	<input type="text" name="date" id="date">
+
+	<script>
+		$("#date").datepicker({
+			format: "yyyy-mm-dd",
+			startDate: "+5d",
+			endDate: "+6d",
+			language: "zh-CN"
+		})
+	</script>
+</body>
+</html>

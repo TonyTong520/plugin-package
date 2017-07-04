@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.js"></script>
+	<script src="jquery.cookie.js"></script>
+</head>
+<body>
+	<input type="text" id="msg">
+	<button>保存消息</button>
+	<script>
+		$("button").click(function(){
+			var msg = $("#msg").val();
+			$.cookie("msg", msg);
+		});
+	</script>
+</body>
+</html>

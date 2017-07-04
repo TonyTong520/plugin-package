@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			border: 1px solid red;
+		}
+	</style>
+	<link rel="stylesheet" href="uploadify/uploadify.css">
+	<script src="jquery.js"></script>
+	<script src="uploadify/jquery.uploadify.js"></script>
+</head>
+<body>
+	<form action="">
+		<input type="file" name="file" id="file">
+		<button>提交</button>
+	</form>
+
+	<script>
+		$("#file").uploadify({
+			//flash文件的路径
+			swf: "uploadify/uploadify.swf",
+			//上传文件的接口地址
+			uploader: "http://api.botue.com/uploader/avatar",
+			buttonText: "选择图片",
+			buttonClass: "red",
+			fileObjName: "",
+			fileSizeLimit: "100KB",
+			'fileTypeDesc' : 'Image Files',
+        	'fileTypeExts' : '*.gif; *.jpg; *.png',
+        	formData: {
+        		name: "教主"
+        	},
+        	height: 200,
+        	width: 200,
+        	itemTemplate : '<p></p>'
+		});
+	</script>
+</body>
+</html>

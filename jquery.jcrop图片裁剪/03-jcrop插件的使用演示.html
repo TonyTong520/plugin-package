@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="Jcrop/css/Jcrop.css">
+	<script src="jquery.js"></script>
+	<script src="Jcrop/js/Jcrop.js"></script>
+</head>
+<body>
+	<div id="container">
+		<img src="1.jpg" alt="" id="target">
+	</div>
+	<script>
+		 $('#target').Jcrop({
+			// aspectRatio: 2,	
+			// bgColor: "hotpink",
+			bgOpacity: 0.3,
+			maxSize: [100, 100],
+			minSize: [50, 50],
+			// canSelect: false,
+			// canDelete:false,
+			// canDrag: false
+			// canResize: false,
+			edge: {n:10,s:10,e:10,w:10},
+			linked: true,
+			// boxHeight: 100,
+			// boxWidth: 1000,
+			// animation: false,
+			// multi: true,
+			// fadeDuration: 10000
+			setSelect: [100, 100, 100, 100]
+		},function(){
+		  var jcrop_api = this;
+		  thumbnail = this.initComponent('Thumbnailer', { width: 130, height: 130 });
+		});
+
+
+		$("#container").on('cropmove',function(e,s,c){
+		  	console.log(c);
+		});
+	</script>
+</body>
+</html>

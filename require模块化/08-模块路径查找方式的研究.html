@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="require.js"></script>
+	<script>
+		require.config({
+			baseUrl: "/modules",
+			paths: {
+				"xm": "modules1/modules2/modules3/moduleXM" 
+			}
+		});
+
+		require(["xm"]);
+
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

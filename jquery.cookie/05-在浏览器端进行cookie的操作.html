@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//cookie其实就是document的一个属性
+		//可以直接通过document.cookie来进行访问
+		//cookie其实就是一个长的字符串，这个字符串的格式
+		// key=value;key=value;key=value
+
+
+		//存cookie可以直接使用 document.cookie="key=value"
+		//对于document.cookie的赋值操作不会覆盖之前的内容，而是一个追加操作！
+		document.cookie = "name=张三";
+		document.cookie = "age=18";
+
+		function getCookie(key){
+			//key=value;key=value;key=value
+			var kvPairArr = document.cookie.split(";");
+			var result = undefined;
+			kvPairArr.forEach(function(v){
+				//v   key=value
+				var kvPair = v.split("=");
+				if(key == kvPair[0].trim()){
+					result = kvPair[1];
+				}
+			});
+			return result;
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

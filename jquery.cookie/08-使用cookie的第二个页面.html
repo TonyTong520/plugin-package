@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.js"></script>
+	<script src="jquery.cookie.js"></script>
+</head>
+<body>
+	
+	<span id="msg"></span>
+
+	<script>
+		$("#msg").text($.cookie("msg"));
+	</script>
+</body>
+</html>
